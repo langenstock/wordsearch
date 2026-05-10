@@ -7,6 +7,11 @@
 #include <cstring>
 #include <random>
 
+enum class EResult
+{
+	Success, Fail
+};
+
 enum class EDirection
 {
 	Forwards, Backwards, Up, Down, DiagonalUpLeft, DiagonalUpRight, 
@@ -25,7 +30,7 @@ class Grid
 public:
 	Grid();
 	Grid(int width, int height);
-	void TryInsertWord(const char* word);
+	EResult TryInsertWord(const char* word);
 	void FillInBlankSpots();
 
 	void DebugConsolePrint(bool includeSpaces);

@@ -10,8 +10,10 @@ int main()
     Grid g{ 25, 25 };
     
     std::vector<const char*> words;
+    std::vector<const char*> wordsUsed;
 
     // Add or remove any number of words
+
     words.push_back("ROSE");
     words.push_back("TULIP");
     words.push_back("DAISY");
@@ -39,8 +41,11 @@ int main()
     words.push_back("DAHLIA");
     words.push_back("FREESIA");
 
+
     for (const char* word : words) {
-        g.TryInsertWord(word);
+        if (g.TryInsertWord(word) == EResult::Success) {
+            wordsUsed.push_back(word);
+        }
     }
 
     // This print out will show the locations of the words more clearly
@@ -54,7 +59,7 @@ int main()
 
     // Print out the list of words to be found
     std::cout << std::endl;
-    for (const char* word : words) {
+    for (const char* word : wordsUsed) {
         std::cout << word << std::endl;
     }
 }

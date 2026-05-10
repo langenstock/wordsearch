@@ -36,7 +36,7 @@ Grid::Grid(int width, int height)
 	}
 }
 
-void Grid::TryInsertWord(const char* word)
+EResult Grid::TryInsertWord(const char* word)
 {
 	int sizeOfWord = std::strlen(word);
 	std::vector<PossibleWordPosition> possibilities;
@@ -181,7 +181,9 @@ void Grid::TryInsertWord(const char* word)
 		int idxOfChosen = RIntInRange(0, possibilities.size() - 1);
 		auto& p = possibilities[idxOfChosen];
 		InsertWord(word, p.row, p.column, p.dir);
+		return EResult::Success;
 	}
+	return EResult::Fail;
 }
 
 void Grid::FillInBlankSpots()
